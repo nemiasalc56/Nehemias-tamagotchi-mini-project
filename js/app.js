@@ -27,6 +27,7 @@ const game = {
 
 		this.setInterval = setInterval(() => {
 			this.timer++
+			this.showStatus()
 			if(this.timer % 2 === 0) {
 				this.age++
 			}
@@ -45,12 +46,13 @@ const game = {
 		}, 1000)
 
 		$('<img class="alive" src="images/active.gif">').appendTo($('.container'))
+
 	},
 	birthTamagotchi() {
 		const newTamagotchi = new Tamagotchi(this.name, this.age, this.hunger, this.boredom, this.sleepiness)
 	},
 	showDead() {
-		if(this.hunger === 2) {
+		if(this.hunger === 10) {
 			alert('Your pet died!')
 			clearInterval(this.setInterval)
 		} else if(this.sleepiness === 10) {
@@ -60,9 +62,18 @@ const game = {
 			alert('Your pet died!')
 			clearInterval(this.setInterval)
 		}
+	},
+	showStatus() {
+		$('.age').text(this.age)
+		$('.boredom').text(this.boredom)
+		$('.sleepiness').text(this.sleepiness)
+		$('.hunger').text(this.hunger)
 	}
 }
 console.log(game.setInterval);
+
+
+
 // Listeners
 // Get name
 $('.form').on('submit', (e) => {
