@@ -28,14 +28,14 @@ const game = {
 		this.setInterval = setInterval(() => {
 			this.timer++
 			this.showStatus()
-			if(this.timer % 2 === 0) {
+			if(this.timer % 4 === 0) {
 				this.age++
 			}
-			if(this.timer % 3 === 0) {
+			if(this.timer % 2 === 0) {
 				this.sleepiness++
 				this.showDead()
 			}
-			if(this.timer % 5 === 0) {
+			if(this.timer % 3 === 0) {
 				this.boredom++
 				this.showDead()
 			}
@@ -68,6 +68,21 @@ const game = {
 		$('.boredom').text(this.boredom)
 		$('.sleepiness').text(this.sleepiness)
 		$('.hunger').text(this.hunger)
+	},
+	subHunger() {
+		if(this.hunger >= 3) {
+			this.hunger -= 3
+		}
+	},
+	subSleepiness() {
+		if(this.sleepiness >= 2) {
+			this.sleepiness -= 2
+		}
+	},
+	subBoredom() {
+		if(this.boredom >= 4) {
+			this.boredom -= 4
+		}
 	}
 }
 console.log(game.setInterval);
@@ -83,4 +98,17 @@ $('.form').on('submit', (e) => {
 	game.startGame()
 
 	$('.name-field').val('')
+})
+
+//age
+$('.play').on('click', (e) => {
+	game.subBoredom()
+})
+//sleep
+$('.sleep').on('click', (e) => {
+	game.subSleepiness()
+})
+//hunger
+$('.feed').on('click', (e) => {
+	game.subBoredom()
 })
