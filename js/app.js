@@ -10,9 +10,7 @@ class Tamagotchi {
 
 		console.log(this);
 	}
-	tamagotchi() {
 
-	}
 }
 
 // Object
@@ -22,22 +20,49 @@ const game = {
 	hunger: 0,
 	sleepiness: 0,
 	boredom: 0,
-	timer: 0,
 	setInterval: 0,
+	timer: 0,
 	startGame() {
 		$('.form').text(`Name: ${this.name}`)
-		this.setInterval = setInterval(() => {
-			this.age++
-			console.log('Age ', this.age);
-			this.birthTamagotchi()
-		}, 1800)
 
+		this.setInterval = setInterval(() => {
+			this.timer++
+			if(this.timer % 2 === 0) {
+				this.age++
+			}
+			if(this.timer % 3 === 0) {
+				this.sleepiness++
+				this.showDead()
+			}
+			if(this.timer % 5 === 0) {
+				this.boredom++
+				this.showDead()
+			}
+			if(this.timer % 2 === 0) {
+				this.hunger++
+				this.showDead()
+			}
+		}, 1000)
+
+		$('<img class="alive" src="images/active.gif">').appendTo($('.container'))
 	},
 	birthTamagotchi() {
 		const newTamagotchi = new Tamagotchi(this.name, this.age, this.hunger, this.boredom, this.sleepiness)
+	},
+	showDead() {
+		if(this.hunger === 2) {
+			alert('Your pet died!')
+			clearInterval(this.setInterval)
+		} else if(this.sleepiness === 10) {
+			alert('Your pet died!')
+			clearInterval(this.setInterval)
+		} else if(this.boredom === 10) {
+			alert('Your pet died!')
+			clearInterval(this.setInterval)
+		}
 	}
 }
-
+console.log(game.setInterval);
 // Listeners
 // Get name
 $('.form').on('submit', (e) => {
