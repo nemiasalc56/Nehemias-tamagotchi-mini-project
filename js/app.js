@@ -36,10 +36,8 @@ class Tamagotchi {
 			this.lightSwitcher = true
 		}
 	}
-
 }
 
-// Object
 const game = {
 	name: '',
 	age: 0,
@@ -80,16 +78,20 @@ const game = {
 				}
 				if(this.lightTime >= 3) {
 					this.newTamagotchi.turnLinghtOnOff()
-					$('.container').css({'background': 'url(https://i.pinimg.com/originals/b0/1f/f7/b01ff7a81d06aa2ac6f71b7b68634bf1.gif)', 'background-size': 'contain'}).css({'transition': '1s ease-in'})
+					$('.container').css({
+						'background': 'url(https://i.pinimg.com/originals/b0/1f/f7/b01ff7a81d06aa2ac6f71b7b68634bf1.gif)', 
+						'background-size': 'contain'
+					}).css({
+						'transition': '1s ease-in'})
 					this.lightTime = 0
-					$('.my-pet').attr('src', 'images/active.gif').css({'transition': '1s ease-in'})
+					$('.my-pet').attr('src', 'images/active.gif')
 				} 
 			}
 			if(this.newTamagotchi.eatTimePic && this.timer%1 ===0){
 				this.eatTime++
 				if(this.eatTime >= 3) {
 					this.newTamagotchi.eatStatus()
-					$('.my-pet').attr('src', 'images/active.gif').css({'transition': '1s ease-in'})
+					$('.my-pet').attr('src', 'images/active.gif')
 				}
 			}
 		}, 1200)
@@ -119,30 +121,34 @@ const game = {
 		if(this.hunger >= 3 && this.newTamagotchi.eatTimePic === false) {
 			this.hunger -= 3
 			this.newTamagotchi.eatStatus()
-			$('.my-pet').attr('src', 'images/eat.gif').css({'transition': '1s ease-in'})
+			$('.my-pet').attr('src', 'images/eat.gif')
 		}
 	},
 	subSleepiness() {
 		if(this.sleepiness >= 2) {
 			this.sleepiness -= 2
 		}
-		$('.my-pet').attr('src', 'images/sonicsleep.jpg').css({'transition': '1s ease-in'})
+		$('.my-pet').attr('src', 'images/sonicsleep.jpg')
 		this.lightSwitch()
 	},
 	deadTamagotchi() {
 		clearInterval(this.setInterval)
-		$('.my-pet').attr('src', 'images/dead.gif').css({'transition': '1s ease-in'})
+		$('.my-pet').attr('src', 'images/dead.gif')
 		$('.form').text(`Your pet died`)
 	},
 	subBoredom() {
 		if(this.boredom >= 2) {
 			this.boredom -= 2
-			$('.my-pet').attr('src', 'images/play.gif').css({'transition': '1s ease-in'})
+			$('.my-pet').attr('src', 'images/play.gif')
 		}
 	},
 
 	lightSwitch() {
-		$('.container').css({'background': 'rgba(0, 0, 0, 0.8)'}).css({'transition': '1s ease-in'})
+		$('.container').css({
+			'background': 'rgba(0, 0, 0, 0.8)'
+		}).css({
+			'transition': '1s ease-in'
+		})
 		if(this.newTamagotchi.lightSwitcher === false) {
 			this.newTamagotchi.turnLinghtOnOff()
 		}
@@ -154,20 +160,18 @@ const game = {
 		}
 	},
 	checkBore() {
-		if(this.boredom ===3 || this.boredom === 7) {
-		$('.my-pet').attr('src', 'images/bore.gif').css({'transition': '1s ease-in'})
+		if(this.boredom ===3 || this.boredom ===7) {
+		$('.my-pet').attr('src', 'images/bore.gif')
 
 		}
 	}
 }
-
 
 $('.form').on('submit', (e) => {
 	e.preventDefault()
 	const $name = $('.name-field')
 	game.name = $name.val()
 	game.startGame()
-
 	$('.name-field').val('')
 })
 
