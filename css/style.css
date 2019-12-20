@@ -6,6 +6,7 @@ body {
 	height: 500px;
 	background-color: white;
 	border-radius: 4px;
+	text-align: center;
 }
 
 .buttons {
@@ -48,12 +49,14 @@ ul {
 
 
 .form {
-	margin: 5px 39%;
+	margin: 5px;
 	font-size: 30px;
+	text-align: center;
 }
 
 .name-field {
 	font-size: 30px;
 	border-radius: 5px;
+	text-align: center;
 }
 
