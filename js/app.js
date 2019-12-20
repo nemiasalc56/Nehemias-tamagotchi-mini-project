@@ -7,14 +7,14 @@ class Tamagotchi {
 		this.boredom = boredom
 		this.sleepiness = sleepiness
 		this.hunger = hunger
+		this.light = false
 
 		console.log(this);
 	}
 
-	lightSwitch() {
-		$('.container').css('color', 'rbga(255, 255, 255, 0.5)')
+	checkLight() {
+		this.light = true
 	}
-
 }
 
 // Object
@@ -26,8 +26,10 @@ const game = {
 	boredom: 0,
 	setInterval: 0,
 	timer: 0,
+	light: false,
+	lightTime: 0,
 	startGame() {
-		$('.form').text(`Name: ${this.name}`)
+		$('.form').text(`I'm ${this.name}`)
 
 		this.setInterval = setInterval(() => {
 			this.timer++
@@ -46,6 +48,13 @@ const game = {
 			if(this.timer % 2 === 0) {
 				this.hunger++
 				this.showDead()
+			}
+			if(this.light === true && this.timer % 1 === 0 && this.light){
+				this.lightTime++
+				console.log(this.lightTime);
+				if(this.lightTime >= 2) {
+					this.light = false
+				} 
 			}
 		}, 1000)
 
@@ -87,11 +96,18 @@ const game = {
 		if(this.boredom >= 4) {
 			this.boredom -= 4
 		}
+	},
+
+	lightSwitch() {
+		$('.container').css({'background-color': 'rgba(0, 0, 0, 0.8)'})
+		if(this.light === false) {
+			this.light = true
+		}
+		
 	}
 }
 console.log(game.setInterval);
-
-
+const newLight = new Tamagotchi()
 
 // Listeners
 // Get name
@@ -116,7 +132,8 @@ $('.sleep').on('click', (e) => {
 $('.feed').on('click', (e) => {
 	game.subHunger()
 })
-
+// light
 $('.light').on('click', (e) => {
 	game.lightSwitch()
+	// console.log(e.target);
 })

@@ -10,6 +10,7 @@ body {
 
 .buttons {
 	text-align: center;
+	margin-bottom: 5px;
 }
 
 .play {
@@ -30,6 +31,12 @@ body {
 	border-radius: 5px;
 }
 
+.light {
+	font-size: 35px;
+	border: 2px solid blue;
+	border-radius: 5px;
+}
+
 ul {
 	font-size: 20px;
 	background-color: #A52A2A;
@@ -38,6 +45,7 @@ ul {
 	border: 2px solid black;
 	margin: auto;
 }
+
 
 .form {
 	margin: 5px 39%;
