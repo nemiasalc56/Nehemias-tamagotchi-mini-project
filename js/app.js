@@ -7,13 +7,17 @@ class Tamagotchi {
 		this.boredom = boredom
 		this.sleepiness = sleepiness
 		this.hunger = hunger
-		this.light = false
+		this.lightSwitcher = false
 
 		console.log(this);
 	}
 
-	checkLight() {
-		this.light = true
+	turnLinghtOnOff() {
+		if(this.lightSwitcher) {
+			this.lightSwitcher = false
+		} else {
+			this.lightSwitcher = true
+		}
 	}
 }
 
@@ -37,7 +41,7 @@ const game = {
 			if(this.timer % 4 === 0) {
 				this.age++
 			}
-			if(this.timer % 2 === 0) {
+			if(this.timer % 2 === 0 && this.light === false) {
 				this.sleepiness++
 				this.showDead()
 			}
@@ -51,9 +55,10 @@ const game = {
 			}
 			if(this.light === true && this.timer % 1 === 0 && this.light){
 				this.lightTime++
-				console.log(this.lightTime);
+				this.sleepiness--
 				if(this.lightTime >= 2) {
 					this.light = false
+					$('.container').css('background-color', 'white')
 				} 
 			}
 		}, 1000)
@@ -106,8 +111,7 @@ const game = {
 		
 	}
 }
-console.log(game.setInterval);
-const newLight = new Tamagotchi()
+
 
 // Listeners
 // Get name
