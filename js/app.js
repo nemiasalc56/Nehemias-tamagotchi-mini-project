@@ -11,6 +11,10 @@ class Tamagotchi {
 		console.log(this);
 	}
 
+	lightSwitch() {
+		$('.container').css('color', 'rbga(255, 255, 255, 0.5)')
+	}
+
 }
 
 // Object
@@ -110,5 +114,9 @@ $('.sleep').on('click', (e) => {
 })
 //hunger
 $('.feed').on('click', (e) => {
-	game.subBoredom()
+	game.subHunger()
+})
+
+$('.light').on('click', (e) => {
+	game.lightSwitch()
 })

@@ -3,8 +3,49 @@ body {
 }
 
 .container {
-	height: 400px;
+	height: 500px;
 	background-color: white;
 	border-radius: 4px;
 }
-.
+
+.buttons {
+	text-align: center;
+}
+
+.play {
+	font-size: 35px;
+	border: 2px solid blue;
+	border-radius: 5px;
+}
+
+.sleep {
+	font-size: 35px;
+	border: 2px solid blue;
+	border-radius: 5px;
+}
+
+.feed {
+	font-size: 35px;
+	border: 2px solid blue;
+	border-radius: 5px;
+}
+
+ul {
+	font-size: 20px;
+	background-color: #A52A2A;
+	width: 400px;
+	border-radius: 5px;
+	border: 2px solid black;
+	margin: auto;
+}
+
+.form {
+	margin: 5px 39%;
+	font-size: 30px;
+}
+
+.name-field {
+	font-size: 30px;
+	border-radius: 5px;
+}
+
